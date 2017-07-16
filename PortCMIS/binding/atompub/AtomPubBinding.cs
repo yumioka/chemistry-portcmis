@@ -1002,6 +1002,11 @@ namespace PortCMIS.Binding.AtomPub
             UrlBuilder url = new UrlBuilder(GetServiceDocURL());
             url.AddParameter(BindingConstants.ParamRepositoryId, repositoryId);
 
+            // prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" +servicedocUrl.Authority;
+
             // read and parse
             IResponse resp = Read(url);
             ServiceDoc serviceDoc = Parse<ServiceDoc>(resp.Stream);
@@ -1024,12 +1029,17 @@ namespace PortCMIS.Binding.AtomPub
                         colMap.TryGetValue("collectionType", out collectionType);
                         string href;
                         colMap.TryGetValue("href", out href);
-
+                        // replace by outside name
+                        href = href.Replace(localUrl, targetUrl);
                         AddCollection(ws.Id, collectionType, href);
                     }
                     else if (element.Object is AtomLink)
                     {
-                        AddRepositoryLink(ws.Id, (AtomLink)element.Object);
+                        // replace by outside name
+                        AtomLink al = (AtomLink)element.Object;
+                        al.Href = al.Href.Replace(localUrl, targetUrl);
+                        AddRepositoryLink(ws.Id, al);
+                        //AddRepositoryLink(ws.Id, (AtomLink)element.Object);
                     }
                     else if (Matches(NameUriTemplate, element))
                     {
@@ -1038,7 +1048,8 @@ namespace PortCMIS.Binding.AtomPub
                         tempMap.TryGetValue("type", out type);
                         string template;
                         tempMap.TryGetValue("template", out template);
-
+                        // replace by outside name 
+                        template = template.Replace(localUrl, targetUrl);
                         AddTemplate(ws.Id, type, template);
                     }
                     else if (element.Object is RepositoryInfo)
