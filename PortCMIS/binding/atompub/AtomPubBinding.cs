@@ -2431,7 +2431,8 @@ namespace PortCMIS.Binding.AtomPub
         {
             // find the link
             string link = null;
-            if (streamId != null)
+
+            if (streamId != null && link == null)
             {
                 // use the alternate link per spec
                 link = LoadLink(repositoryId, objectId, BindingConstants.RelAlternate, streamId);
@@ -2445,17 +2446,20 @@ namespace PortCMIS.Binding.AtomPub
                 link = LoadLink(repositoryId, objectId, AtomPubParser.LinkRelContent, null);
             }
 
-            if (link == null)
-            {
-                throw new CmisConstraintException("No content stream");
-            }
 
             // prepare url info for reqs from outside of proxy
             string localUrl = "http://localhost:8080";
             Uri servicedocUrl = new Uri(GetServiceDocURL());
             string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
-            link = link.Replace(localUrl, targetUrl);
+            if (link != null)
+            {
+                link = link.Replace(localUrl, targetUrl);
+            }
+            if (link == null)
+            {
 
+              throw new CmisConstraintException("No content stream");
+            }
 
             UrlBuilder url = new UrlBuilder(link);
             // using the content URL and adding a streamId param is not
@@ -2464,6 +2468,45 @@ namespace PortCMIS.Binding.AtomPub
 
             // get the content
             IResponse resp = Session.GetHttpInvoker().InvokeGET(url, Session, (long?)offset, (long?)length);
+
+            // check response code
+            if (resp.StatusCode != 200 && resp.StatusCode != 206)
+            {
+                throw ConvertStatusCode(resp.StatusCode, resp.Message, resp.ErrorContent, null);
+            }
+
+            ContentStream result;
+            if (resp.StatusCode == 206)
+            {
+                result = new PartialContentStream();
+            }
+            else
+            {
+                result = new ContentStream();
+            }
+
+            result.Length = resp.ContentLength;
+            result.MimeType = resp.ContentType;
+            result.Stream = resp.Stream;
+
+            return result;
+        }
+        public IContentStream GetContentStream(string repositoryId, string objectId, string docName)
+        {
+
+            // prepare url info for reqs from outside of proxy
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+
+            string link = targetUrl + "/core/atom/" + repositoryId + "/content/" + docName + "?id=" + objectId;
+
+            UrlBuilder url = new UrlBuilder(link);
+            // using the content URL and adding a streamId param is not
+            // spec-compliant
+            //url.AddParameter(BindingConstants.ParamStreamId, streamId);
+
+            // get the content
+            IResponse resp = Session.GetHttpInvoker().InvokeGET(url, Session, null, null);
 
             // check response code
             if (resp.StatusCode != 200 && resp.StatusCode != 206)
