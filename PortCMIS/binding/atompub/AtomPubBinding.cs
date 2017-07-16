@@ -2450,6 +2450,13 @@ namespace PortCMIS.Binding.AtomPub
                 throw new CmisConstraintException("No content stream");
             }
 
+            // prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
+
+
             UrlBuilder url = new UrlBuilder(link);
             // using the content URL and adding a streamId param is not
             // spec-compliant
