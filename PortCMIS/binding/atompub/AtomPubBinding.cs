@@ -1631,6 +1631,15 @@ namespace PortCMIS.Binding.AtomPub
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
             }
 
+            // prepare url info for reqs from outside of proxy
+
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
+
+
+
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFilter, filter);
             url.AddParameter(BindingConstants.ParamOrderBy, orderBy);
