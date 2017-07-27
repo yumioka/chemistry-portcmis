@@ -1213,7 +1213,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAcl, BindingConstants.MediaTypeAcl);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamOnlyBasicPermissions, onlyBasicPermissions);
 
@@ -1236,7 +1240,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAcl, BindingConstants.MediaTypeAcl);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder aclUrl = new UrlBuilder(link);
             aclUrl.AddParameter(BindingConstants.ParamAclPropagation, aclPropagation);
 
@@ -1316,7 +1324,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 throw new CmisObjectNotFoundException("Unknown repository or type!");
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamPropertyDefinitions, includePropertyDefinitions);
             url.AddParameter(BindingConstants.ParamMaxItems, maxItems);
@@ -1402,7 +1414,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 throw new CmisObjectNotFoundException("Unknown repository or type!");
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamDepth, depth);
             url.AddParameter(BindingConstants.ParamPropertyDefinitions, includePropertyDefinitions);
@@ -1742,7 +1758,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeEntry);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamDepth, depth);
             url.AddParameter(BindingConstants.ParamFilter, filter);
@@ -1774,7 +1794,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelFolderTree, BindingConstants.MediaTypeEntry);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamDepth, depth);
             url.AddParameter(BindingConstants.ParamFilter, filter);
@@ -1866,7 +1890,11 @@ namespace PortCMIS.Binding.AtomPub
                 // root and unfiled objects have no UP link
                 return result;
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFilter, filter);
             url.AddParameter(BindingConstants.ParamAllowableActions, includeAllowableActions);
@@ -2032,7 +2060,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 throw new CmisObjectNotFoundException("Unknown repository or checkedout collection not supported!");
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFolderId, folderId);
             url.AddParameter(BindingConstants.ParamFilter, filter);
@@ -2298,7 +2330,11 @@ namespace PortCMIS.Binding.AtomPub
                     ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
                 }
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
 
             // set up writer
@@ -2345,7 +2381,11 @@ namespace PortCMIS.Binding.AtomPub
                     ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
                 }
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
 
             // set up writer
@@ -2413,7 +2453,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAllowableActions, BindingConstants.MediaTypeAllowableAction);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
 
             // read and parse
@@ -2669,7 +2713,11 @@ namespace PortCMIS.Binding.AtomPub
         {
             // find link
             string link = LoadCollection(repositoryId, BindingConstants.CollectionBulkUpdate);
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             if (link == null)
             {
                 throw new CmisObjectNotFoundException("Unknown repository or bulk update properties is not supported!");
@@ -2747,7 +2795,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, targetFolderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamSourceFolderId, sourceFolderId);
 
@@ -2792,7 +2844,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelSelf, BindingConstants.MediaTypeEntry);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamAllVersions, allVersions);
 
@@ -2839,7 +2895,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeDecendants);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamAllVersions, allVersions);
             url.AddParameter(BindingConstants.ParamUnfileObjects, unfileObjects);
@@ -2917,7 +2977,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelEditMedia, null);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             if (changeToken != null && !Session.GetValue(SessionParameter.OmitChangeTokens, false))
             {
@@ -3040,6 +3104,12 @@ namespace PortCMIS.Binding.AtomPub
             {
                 throw new CmisObjectNotFoundException("Unknown repository or checkedout collection not supported!");
             }
+
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder url = new UrlBuilder(link);
 
@@ -3301,6 +3371,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelVersionHistory, BindingConstants.MediaTypeFeed);
             }
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFilter, filter);
@@ -3367,7 +3442,11 @@ namespace PortCMIS.Binding.AtomPub
 
             // find the link
             string link = LoadCollection(repositoryId, BindingConstants.CollectionQuery);
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             if (link == null)
             {
                 throw new CmisObjectNotFoundException("Unknown repository or query not supported!");
@@ -3459,6 +3538,11 @@ namespace PortCMIS.Binding.AtomPub
                 link = LoadRepositoryLink(repositoryId, BindingConstants.RepRelChanges);
                 if (link != null)
                 {
+                    // FIXME :  prepare url info for reqs from outside of proxy
+                    string localUrl = "http://localhost:8080";
+                    Uri servicedocUrl = new Uri(GetServiceDocURL());
+                    string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+                    link = link.Replace(localUrl, targetUrl);
                     url = new UrlBuilder(link);
                     url.AddParameter(BindingConstants.ParamChangeLogToken, changeLogToken);
                     url.AddParameter(BindingConstants.ParamProperties, includeProperties);
@@ -3553,7 +3637,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamAllVersions, allVersions);
 
@@ -3576,7 +3664,11 @@ namespace PortCMIS.Binding.AtomPub
 
             // find the link
             string link = LoadCollection(repositoryId, BindingConstants.CollectionUnfiled);
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             if (link == null)
             {
                 throw new CmisObjectNotFoundException("Unknown repository or unfiling not supported!");
@@ -3611,7 +3703,11 @@ namespace PortCMIS.Binding.AtomPub
 
             // find the link
             string link = LoadLink(repositoryId, objectId, BindingConstants.RelRelationships, BindingConstants.MediaTypeFeed);
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             if (link == null)
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelRelationships, BindingConstants.MediaTypeFeed);
@@ -3706,7 +3802,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelPolicies, BindingConstants.MediaTypeFeed);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
 
             // set up object and writer
@@ -3734,7 +3834,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelPolicies, BindingConstants.MediaTypeFeed);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFilter, PropertyIds.ObjectId);
 
@@ -3796,7 +3900,11 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelPolicies, BindingConstants.MediaTypeFeed);
             }
-
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamFilter, filter);
 
