@@ -1214,6 +1214,12 @@ namespace PortCMIS.Binding.AtomPub
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAcl, BindingConstants.MediaTypeAcl);
             }
 
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
+
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamOnlyBasicPermissions, onlyBasicPermissions);
 
@@ -1236,6 +1242,12 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAcl, BindingConstants.MediaTypeAcl);
             }
+
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder aclUrl = new UrlBuilder(link);
             aclUrl.AddParameter(BindingConstants.ParamAclPropagation, aclPropagation);
@@ -2299,6 +2311,12 @@ namespace PortCMIS.Binding.AtomPub
                 }
             }
 
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
+
             UrlBuilder url = new UrlBuilder(link);
 
             // set up writer
@@ -2345,6 +2363,12 @@ namespace PortCMIS.Binding.AtomPub
                     ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
                 }
             }
+
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder url = new UrlBuilder(link);
 
@@ -2413,6 +2437,12 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelAllowableActions, BindingConstants.MediaTypeAllowableAction);
             }
+
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder url = new UrlBuilder(link);
 
@@ -3554,6 +3584,12 @@ namespace PortCMIS.Binding.AtomPub
                 ThrowLinkException(repositoryId, folderId, BindingConstants.RelDown, BindingConstants.MediaTypeChildren);
             }
 
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
+
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamAllVersions, allVersions);
 
@@ -3616,6 +3652,12 @@ namespace PortCMIS.Binding.AtomPub
             {
                 ThrowLinkException(repositoryId, objectId, BindingConstants.RelRelationships, BindingConstants.MediaTypeFeed);
             }
+
+            // FIXME :  prepare url info for reqs from outside of proxy
+            string localUrl = "http://localhost:8080";
+            Uri servicedocUrl = new Uri(GetServiceDocURL());
+            string targetUrl = servicedocUrl.Scheme + "://" + servicedocUrl.Authority;
+            link = link.Replace(localUrl, targetUrl);
 
             UrlBuilder url = new UrlBuilder(link);
             url.AddParameter(BindingConstants.ParamSubRelationshipTypes, includeSubRelationshipTypes);
