@@ -60,6 +60,9 @@ namespace PortCMIS.Client.Impl
         /// <inheritdoc/>
         public ISession CreateSession(IDictionary<string, string> parameters, IObjectFactory objectFactory, IAuthenticationProvider authenticationProvider, ICache cache)
         {
+            var url = parameters[SessionParameter.AtomPubUrl];
+            UrlBuilder.SetForceURL(url);
+
             Session session = new Session(parameters, objectFactory, authenticationProvider, cache);
             session.Connect();
 

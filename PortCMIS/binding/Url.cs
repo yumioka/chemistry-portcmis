@@ -30,6 +30,19 @@ namespace PortCMIS.Binding
     /// </summary>
     public class UrlBuilder
     {
+
+        public static void SetForceURL(string template) {
+            var uri = new UriBuilder(template);
+            ForceScheme = uri.Scheme;
+            ForceHost = uri.Host;
+            ForcePort = uri.Port;
+
+        }
+        public static string ForceScheme { get; set; }
+        public static string ForceHost { get; set; }
+        public static int ForcePort { get; set; }
+
+
         private UriBuilder uri;
 
         /// <value>
@@ -50,8 +63,11 @@ namespace PortCMIS.Binding
             {
                 throw new ArgumentNullException(nameof(url));
             }
-
+            
             uri = new UriBuilder(url);
+            uri.Host = ForceHost;
+            uri.Port = ForcePort;
+            uri.Scheme = ForceScheme;
         }
 
         /// <summary>
@@ -66,6 +82,9 @@ namespace PortCMIS.Binding
             }
 
             uri = new UriBuilder(url);
+            uri.Host = ForceHost;
+            uri.Port = ForcePort;
+            uri.Scheme = ForceScheme;
         }
 
         /// <summary>
