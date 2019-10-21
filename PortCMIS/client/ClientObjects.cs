@@ -914,6 +914,11 @@ namespace PortCMIS.Client.Impl
     /// </summary>
     public class Document : AbstractFileableCmisObject, IDocument
     {
+        private ISession session;
+        private IObjectType objectType;
+        private object objectData;
+        private object context;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -924,6 +929,14 @@ namespace PortCMIS.Client.Impl
         public Document(ISession session, IObjectType objectType, IObjectData objectData, IOperationContext context)
         {
             Initialize(session, objectType, objectData, context);
+        }
+
+        public Document(ISession session, IObjectType objectType, object objectData, object context)
+        {
+            this.session = session;
+            this.objectType = objectType;
+            this.objectData = objectData;
+            this.context = context;
         }
 
         /// <inheritdoc/>
